@@ -3,12 +3,12 @@
 #include <cstdio>
 #include <string>
 #include <memory>
+
 class Logger
 {
 	FILE* m_pStream;
 	std::string m_Tag;
 	Logger();
-	static Logger* m_pInstance;
 	~Logger();
 
 public:

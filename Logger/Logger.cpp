@@ -1,23 +1,16 @@
 #include "Logger.h"
 #include <iostream>
 
-Logger* Logger::m_pInstance;
-
 Logger::Logger()
 {
 	std::cout << __FUNCSIG__ << std::endl;
 	m_pStream = fopen("applog.txt", "w");
-	atexit([]() {
-		delete m_pInstance;
-		});
 }
 
 Logger& Logger::Instance()
 {
-	if (m_pInstance == nullptr)
-		m_pInstance = new Logger{};
-
-	return *m_pInstance;
+	static Logger instance;
+	return instance;
 }
 
 Logger::~Logger()
